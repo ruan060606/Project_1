@@ -14,6 +14,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+	<!-- Team 2 Header -->
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="page-header">
@@ -28,7 +29,9 @@
 			</ul>
 		</div>
 	</div> <!-- row -->
-	<!-- 	submit form -->
+	<!-- Team 2 Header -->
+
+	<!-- Submit form -->
 	<div class="row">
 		<div class="col-lg-6">
 				<div class="panel-group">
@@ -51,9 +54,9 @@
 		                        <br>
 		          				<input type="number" class="form-control" id="start_date_field" placeholder="00:00">
 		                        <br>
-		                        <label>Miles</label>
+		                        <label>Calorie</label>
 		                        <br>
-		          				<input type="number" class="form-control" id="miles_rate_field" placeholder="">
+		          				<input type="number" class="form-control" id="calorie_field" placeholder="">
 		                        <br>
 		                          <button type="submit" class="btn btn-primary" id="button_submit">Submit</button>
 		          				</div>
@@ -62,10 +65,11 @@
 		      			</div> <!-- panel-primary -->
 		        </div> <!-- panel-group -->
 		</div>
+		<!-- Submit form -->
 
 		<!-- Google Map -->
 		<div class="col-lg-6">
-			<div class="panel panel-default">
+			<div class="panel panel-primary">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Google Route</h3>
 			  </div>
@@ -75,9 +79,41 @@
 			</div>
 		</div>
 
+	</div> <!-- row -->
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Current Runner</h3>
+                </div>
+                  <div class="panel-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>weight</th>
+                          <th>Start Time</th>
+                          <th>Calorie</th>
+                          <th>Miles</th>
+                        </tr>
+                      </thead>
+                      <tbody class="employee-data-body">
+                        <tr class="employee-data-row">
+                          <td class="name">Example</td>
+                          <td class="weight">160lb</td>
+                          <td class="start-time">00:00</td>
+                          <td class="calorie">100</td>
+                          <td class="total-miles">6000</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div> <!-- panel-body -->
+            </div> <!-- panel-primary -->
+		</div>
 	</div>
 
-
+	
 	<script src="assets/javascript/javascript.js"></script>
 </body>
 </html>
