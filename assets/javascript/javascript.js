@@ -3,7 +3,7 @@
 //example using places api
 
 $("#button_submit").on("click", function(){
-
+console.log('click');
 var API_KEY = "AIzaSyCQPkqDoLqZjqpqhqnnRyE79yUe0omijso";
 //https://stackoverflow.com/questions/45185061/google-places-api-cors
 var PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
