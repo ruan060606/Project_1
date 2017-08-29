@@ -6,12 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- 	bootstrap cdn-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- mapbox css -->
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
   <!--   css -->
   <link href="assets/css/style.css" rel="stylesheet">
   <!-- firebase cdn -->
   <script src=""></script>
   <!--   jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Mapbox JS -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
 </head>
 <body>
 	<!-- Team 2 Header -->
@@ -75,7 +79,7 @@
 			  </div>
 			  <div class="panel-body">
 			  	<div id="google_map">
-			  		Example Route
+			  		<div id='map' style='width: 400px; height: 300px;'></div>
 			  	</div>
 			  </div>
 			</div>
@@ -115,6 +119,14 @@
 		</div>
 	</div>
 
+<!-- Mapbox embed map script -->
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoianR1bmcyMyIsImEiOiJjajZ4MXh3aHExYjdqMnd0YnFwNzY4M3IxIn0.G-G98WaV-OnDu49gL-Jr7g';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9'
+});
+</script>
 	
 	<script src="assets/javascript/javascript.js"></script>
 </body>
