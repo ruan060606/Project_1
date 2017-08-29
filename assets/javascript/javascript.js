@@ -36,3 +36,14 @@ var url = PROXY_URL
 
 
 })()
+
+// Firebase set up /////////////////////////////////////////
+  var config = {
+    apiKey: "AIzaSyCEHUOLj9sQo4PFvEtbI0uDOktzzroLcYQ",
+    authDomain: "running-app-58fcf.firebaseapp.com",
+    databaseURL: "https://running-app-58fcf.firebaseio.com",
+    projectId: "running-app-58fcf",
+    storageBucket: "running-app-58fcf.appspot.com",
+    messagingSenderId: "886763704573"
+  };
+  firebase.initializeApp(config);
