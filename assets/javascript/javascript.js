@@ -1,4 +1,18 @@
 (function(){
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyCEHUOLj9sQo4PFvEtbI0uDOktzzroLcYQ",
+  authDomain: "running-app-58fcf.firebaseapp.com",
+  databaseURL: "https://running-app-58fcf.firebaseio.com",
+  projectId: "running-app-58fcf",
+  storageBucket: "",
+  messagingSenderId: "886763704573"
+};
+firebase.initializeApp(config);
+
+// Create a variable to reference the database
+var database = firebase.database();
+
 //example using places api
 
 var API_KEY = "AIzaSyCQPkqDoLqZjqpqhqnnRyE79yUe0omijso";
