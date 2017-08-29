@@ -9,7 +9,7 @@
   <!-- mapbox css -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
   <!--   css -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/stylesheet.css" rel="stylesheet">
   <!-- firebase cdn -->
   <script src=""></script>
   <!--   jQuery -->
@@ -119,11 +119,14 @@
 		</div>
 	</div>
 
-<!-- Mapbox embed map script -->
+<!-- Mapbox embed map -->
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoianR1bmcyMyIsImEiOiJjajZ4MXh3aHExYjdqMnd0YnFwNzY4M3IxIn0.G-G98WaV-OnDu49gL-Jr7g';
 var map = new mapboxgl.Map({
     container: 'map',
+    // [long, lat]
+    center: [-122.258423, 37.871853],
+    zoom: 13,
     style: 'mapbox://styles/mapbox/streets-v9'
 });
 </script>
