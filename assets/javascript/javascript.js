@@ -120,6 +120,97 @@ var database = firebase.database();
 
     }
 
+<<<<<<< Updated upstream
+=======
+(function(){
+//example using places api
+
+$("#button_submit").on("click", function(){
+console.log('click');
+var API_KEY = "AIzaSyCQPkqDoLqZjqpqhqnnRyE79yUe0omijso";
+//https://stackoverflow.com/questions/45185061/google-places-api-cors
+var PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
+var caloriesToBurn =  parseInt($("#calorie_field").val().trim());
+var weight = parseInt($("#weight_field").val().trim())
+// http://www.livestrong.com/article/314404-how-many-calories-do-you-lose-per-mile/
+var caloriesPerMile = weight * .75
+
+var milesToRun = caloriesToBurn / caloriesPerMile;
+var type="museum";
+var location = "51.503186,-0.126446";
+var url = PROXY_URL
+		+"https://maps.googleapis.com/maps/api/place/radarsearch/"
+        +"json?location=" + location + "&"
+        +"radius=" + milesToRun + "&" 
+        +"type=" + type + "&"
+        +"key="+API_KEY;
+
+        console.log("url",url)
+
+	$.ajax({method:"GET", 
+		url: url}).done(function(data){
+			console.log("done")
+			console.log(data)
+		})
+var databaseNameInput = $('#name_field').val().trim();
+var databaseWeightInput = $('#weight_field').val().trim();
+var databaseStartDateInput = $('#start_date_field').val().trim();
+var databaseCalorieInput = $('#calorie_field').val().trim();
+console.log(databaseNameInput, databaseWeightInput, databaseStartDateInput, databaseCalorieInput);
+
+database.ref().push({
+  name: databaseNameInput,
+  weight: databaseWeightInput,
+  startTime: databaseStartDateInput,
+  calorie: databaseCalorieInput
+})
+
+})
+
+$('#address_button').on('click', function() {
+var AddressInput = $('#address_field').val().trim();
+var CityInput = $('#city_field').val().trim();
+var StateInput = $('#state_field').val().trim();
+var ZipInput = $('#zip_field').val().trim();
+console.log(AddressInput, CityInput, StateInput, ZipInput);
+
+var key = "AIzaSyDI4WkP2aEnUvW-xJTF5udyKKnTx2Z5cio"
+var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+ AddressInput + "," + CityInput + "," + StateInput + "&key=" + key;
+
+$.ajax({method:"GET", 
+    url: url}).done(function(response){
+      console.log("done")
+      console.log(response);
+      console.log(response.results[0].geometry.location);
+      var location
+
+      function initMap() {
+        var myLatLng = {lat: -25.363, lng: 131.044};
+
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+          zoom: 4
+        });
+
+        // Create a marker and set its position.
+        var marker = new google.maps.Marker({
+          map: map,
+          position: myLatLng,
+          title: 'Hello World!'
+        });
+      }      
+    })
+// database.ref().push({
+//   name: databaseAddressInput,
+//   weight: databaseCityInput,
+//   startTime: databaseStateInput,
+//   calorie: databaseZipInput
+// })
+
+})
+>>>>>>> Stashed changes
 
 
 })()
