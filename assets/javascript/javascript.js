@@ -1,3 +1,17 @@
+// Firebase set up /////////////////////////////////////////
+var config = {
+  apiKey: "AIzaSyCEHUOLj9sQo4PFvEtbI0uDOktzzroLcYQ",
+  authDomain: "running-app-58fcf.firebaseapp.com",
+  databaseURL: "https://running-app-58fcf.firebaseio.com",
+  projectId: "running-app-58fcf",
+  storageBucket: "running-app-58fcf.appspot.com",
+  messagingSenderId: "886763704573"
+};
+firebase.initializeApp(config);
+
+// Create a variable to reference the database
+var database = firebase.database();
+
 
 (function(){
 //example using places api
@@ -29,26 +43,43 @@ var url = PROXY_URL
 			console.log("done")
 			console.log(data)
 		})
+var databaseNameInput = $('#name_field').val().trim();
+var databaseWeightInput = $('#weight_field').val().trim();
+var databaseStartDateInput = $('#start_date_field').val().trim();
+var databaseCalorieInput = $('#calorie_field').val().trim();
+console.log(databaseNameInput, databaseWeightInput, databaseStartDateInput, databaseCalorieInput);
+
+database.ref().push({
+  name: databaseNameInput,
+  weight: databaseWeightInput,
+  startTime: databaseStartDateInput,
+  calorie: databaseCalorieInput
+})
+
+})
+
+$('#address_button').on('click', function() {
+var databaseAddressInput = $('#address_field').val().trim();
+var databaseCityInput = $('#city_field').val().trim();
+var databaseStateInput = $('#state_field').val().trim();
+var databaseZipInput = $('#zip_field').val().trim();
+console.log(databaseAddressInput, databaseCityInput, databaseStateInput, databaseZipInput);
+
+database.ref().push({
+  name: databaseAddressInput,
+  weight: databaseCityInput,
+  startTime: databaseStateInput,
+  calorie: databaseZipInput
+})
+
 })
 
 
 })()
 
-// Firebase set up /////////////////////////////////////////
-var config = {
-  apiKey: "AIzaSyCEHUOLj9sQo4PFvEtbI0uDOktzzroLcYQ",
-  authDomain: "running-app-58fcf.firebaseapp.com",
-  databaseURL: "https://running-app-58fcf.firebaseio.com",
-  projectId: "running-app-58fcf",
-  storageBucket: "running-app-58fcf.appspot.com",
-  messagingSenderId: "886763704573"
-};
-firebase.initializeApp(config);
 
-// Create a variable to reference the database
-var database = firebase.database();
 
-//initialize authentication
+// initialize authentication ////////////////////////////////////
 var uiConfig = {
   callbacks: {
     signInSuccess: function(currentUser, credential, redirectUrl) {
