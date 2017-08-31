@@ -95,27 +95,39 @@ function initMap() {
     map: map
   });
 }
+
 // 
 // Address Button Click function
 // change map location to address
 // 
-$('#address_button').on('click', function() {
-    var AddressInput = $('#address_field').val().trim();
-    var CityInput = $('#city_field').val().trim();
-    var StateInput = $('#state_field').val().trim();
-    var ZipInput = $('#zip_field').val().trim();
-    console.log(AddressInput, CityInput, StateInput, ZipInput);
 
-    var key = "AIzaSyDI4WkP2aEnUvW-xJTF5udyKKnTx2Z5cio"
+$('#address_button').on('click', function() {
+    var addressInput = $('#address_field').val().trim();
+    var cityInput = $('#city_field').val().trim();
+    var stateInput = $('#state_field').val().trim();
+    var zipInput = $('#zip_field').val().trim();
+    console.log(addressInput, cityInput, stateInput, zipInput);
+
+    var key = "AIzaSyDI4WkP2aEnUvW-xJTF5udyKKnTx2Z5cio";
     var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-     AddressInput + "," + CityInput + "," + StateInput + "&key=" + key;
+     addressInput + "," + cityInput + "," + stateInput + "&key=" + key;
 
     $.ajax({method:"GET", 
         url: url}).done(function(response){
-      console.log("done")
+      console.log("done");
       console.log(response);
+
       var location = response.results[0].geometry.location;
       console.log(location);
+
+ // html the start address to the map ////////////////////
+
+      $('#address_html').html('Start Address:' + '<p>' + response.results[0].formatted_address);
+      
+      //   + addressInput + '<br>' + cityInput +
+      // '<br>' + stateInput + '<br>' + zipInput + '</p>');
+
+
       function initMap() {
         console.log("new initMap function run");
           var myLatLng = location;
@@ -139,6 +151,28 @@ $('#address_button').on('click', function() {
 })
 
 
+$('#dest_address_button').on('click', function() {
+  console.log('clicked')
+    var addressInput = $('#dest_address_field').val().trim();
+    var cityInput = $('#dest_city_field').val().trim();
+    var stateInput = $('#dest_state_field').val().trim();
+    var zipInput = $('#dest_zip_field').val().trim();
+    console.log(addressInput, cityInput, stateInput, zipInput);
+
+    var key = "AIzaSyDI4WkP2aEnUvW-xJTF5udyKKnTx2Z5cio";
+    var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+    addressInput + "," + cityInput + "," + stateInput + "&key=" + key;
+    console.log(key);
+    console.log(url);
+    // $.ajax({method:"GET", 
+    //     url: url}).done(function(destResponse){
+    //   console.log("done");
+    //   console.log(destResponse);
+})
+//       var location = response.results[0].geometry.location;
+//       console.log(location);
+// })
+
 // Login
 // And
 // Authentication
@@ -147,6 +181,7 @@ $('#address_button').on('click', function() {
 // 
 //     
 // initialize authentication ////////////////////////////////////
+
 var uiConfig = {
     callbacks: {
         signInSuccess: function(currentUser, credential, redirectUrl) {
