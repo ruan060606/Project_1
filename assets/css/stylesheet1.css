@@ -1,0 +1,22 @@
+.nav {
+	height: : 10vh;
+	background-color: green;
+}
+.nav li a {
+	color: white;
+}
+/*jumbrotron*/
+.jumbotron {
+	height: 100vh;
+	background-image: url(../images/running.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.small_container {
+	width: 50vw;
+  	height: 50vh;
+  	margin-left: 25%;
+	background-color: black;
+	color: white;
+	text-align: center;
+}
