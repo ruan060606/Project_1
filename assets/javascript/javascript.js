@@ -59,18 +59,27 @@ database.ref().push({
 })
 
 $('#address_button').on('click', function() {
-var databaseAddressInput = $('#address_field').val().trim();
-var databaseCityInput = $('#city_field').val().trim();
-var databaseStateInput = $('#state_field').val().trim();
-var databaseZipInput = $('#zip_field').val().trim();
-console.log(databaseAddressInput, databaseCityInput, databaseStateInput, databaseZipInput);
+var AddressInput = $('#address_field').val().trim();
+var CityInput = $('#city_field').val().trim();
+var StateInput = $('#state_field').val().trim();
+var ZipInput = $('#zip_field').val().trim();
+console.log(AddressInput, CityInput, StateInput, ZipInput);
 
-database.ref().push({
-  name: databaseAddressInput,
-  weight: databaseCityInput,
-  startTime: databaseStateInput,
-  calorie: databaseZipInput
-})
+var key = "AIzaSyDI4WkP2aEnUvW-xJTF5udyKKnTx2Z5cio"
+var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+ AddressInput + "," + CityInput + "," + StateInput + "&key=" + key;
+
+$.ajax({method:"GET", 
+    url: url}).done(function(response){
+      console.log("done")
+      console.log(response)
+    })
+// database.ref().push({
+//   name: databaseAddressInput,
+//   weight: databaseCityInput,
+//   startTime: databaseStateInput,
+//   calorie: databaseZipInput
+// })
 
 })
 
