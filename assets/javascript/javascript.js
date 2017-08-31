@@ -48,7 +48,7 @@ firebase.initializeApp(config);
 // Create a variable to reference the database
 var database = firebase.database();
 
-//initialize authentication
+//initialize user authentication
 var uiConfig = {
   callbacks: {
     signInSuccess: function(currentUser, credential, redirectUrl) {
@@ -70,7 +70,7 @@ var uiConfig = {
   queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: 'popup',
-  signInSuccessUrl: '<url-to-redirect-to-on-success>',
+  signInSuccessUrl: 'https://ruan060606.github.io/Project_1/',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
