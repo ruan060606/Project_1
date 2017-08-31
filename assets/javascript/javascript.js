@@ -93,6 +93,7 @@ var database = firebase.database();
     }
 
 
+
 })()
 
 function initMap() {
