@@ -2,17 +2,7 @@
 
 (function() {
 // Firebase set up /////////////////////////////////////////
-function initMap() {
-      var uluru = {lat: -25.363, lng: 131.044};
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
-      });
-      var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-      });
-}
+
 
 var config = {
     apiKey: "AIzaSyCEHUOLj9sQo4PFvEtbI0uDOktzzroLcYQ",
@@ -82,49 +72,71 @@ var database = firebase.database();
 
             })
 
-            $('#address_button').on('click', function() {
-                var AddressInput = $('#address_field').val().trim();
-                var CityInput = $('#city_field').val().trim();
-                var StateInput = $('#state_field').val().trim();
-                var ZipInput = $('#zip_field').val().trim();
-                console.log(AddressInput, CityInput, StateInput, ZipInput);
 
-                var key = "AIzaSyDI4WkP2aEnUvW-xJTF5udyKKnTx2Z5cio"
-                var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-                 AddressInput + "," + CityInput + "," + StateInput + "&key=" + key;
-
-                $.ajax({method:"GET", 
-                    url: url}).done(function(response){
-                  console.log("done")
-                  console.log(response);
-                  console.log(response.results[0].geometry.location);
-                  var location
-
-                  function goToAddress() {
-                      var myLatLng = {lat: -25.363, lng: 131.044};
-
-                      // Create a map object and specify the DOM element for display.
-                      var map = new google.maps.Map(document.getElementById('map'), {
-                        center: myLatLng,
-                        zoom: 4
-                      });
-
-                      // Create a marker and set its position.
-                      var marker = new google.maps.Marker({
-                        map: map,
-                        position: myLatLng,
-                        title: 'Hello World!'
-                      });
-                  }
-              
-                })
-
-            })
 })()
 
+// Google MAP
+// 
+// Google MAP
+// 
+// Google MAP
+// 
+// Google MAP
+// //////////////////////////////////////////////////////////////
 
+function initMap() {
+  var uluru = {lat: -25.363, lng: 131.044};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: uluru
+  });
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map
+  });
+}
+// 
+// Address Button Click function
+// change map location to address
+// 
+$('#address_button').on('click', function() {
+    var AddressInput = $('#address_field').val().trim();
+    var CityInput = $('#city_field').val().trim();
+    var StateInput = $('#state_field').val().trim();
+    var ZipInput = $('#zip_field').val().trim();
+    console.log(AddressInput, CityInput, StateInput, ZipInput);
 
+    var key = "AIzaSyDI4WkP2aEnUvW-xJTF5udyKKnTx2Z5cio"
+    var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+     AddressInput + "," + CityInput + "," + StateInput + "&key=" + key;
 
+    $.ajax({method:"GET", 
+        url: url}).done(function(response){
+      console.log("done")
+      console.log(response);
+      var location = response.results[0].geometry.location;
+      console.log(location);
+      function initMap() {
+        console.log("new initMap function run");
+          var myLatLng = location;
+
+          // Create a map object and specify the DOM element for display.
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: myLatLng,
+            zoom: 14
+          });
+
+          // Create a marker and set its position.
+          var marker = new google.maps.Marker({
+            map: map,
+            position: myLatLng,
+            title: 'Start'
+          });
+      }
+    initMap();
+    })
+
+})
 
 
 // Login
