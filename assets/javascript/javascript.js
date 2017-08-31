@@ -2,6 +2,18 @@
 
 (function() {
 // Firebase set up /////////////////////////////////////////
+function initMap() {
+      var uluru = {lat: -25.363, lng: 131.044};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+}
+
 var config = {
     apiKey: "AIzaSyCEHUOLj9sQo4PFvEtbI0uDOktzzroLcYQ",
     authDomain: "running-app-58fcf.firebaseapp.com",
@@ -70,20 +82,36 @@ var database = firebase.database();
             })
 
             $('#address_button').on('click', function() {
-                var databaseAddressInput = $('#address_field').val().trim();
-                var databaseCityInput = $('#city_field').val().trim();
-                var databaseStateInput = $('#state_field').val().trim();
-                var databaseZipInput = $('#zip_field').val().trim();
-                console.log(databaseAddressInput, databaseCityInput, databaseStateInput, databaseZipInput);
+                var AddressInput = $('#address_field').val().trim();
+                var CityInput = $('#city_field').val().trim();
+                var StateInput = $('#state_field').val().trim();
+                var ZipInput = $('#zip_field').val().trim();
+                console.log(AddressInput, CityInput, StateInput, ZipInput);
 
-                database.ref().push({
-                    name: databaseAddressInput,
-                    weight: databaseCityInput,
-                    startTime: databaseStateInput,
-                    calorie: databaseZipInput
+                .ref().push({
+                    name: AddressInput,
+                    weight: CityInput,
+                    startTime: StateInput,
+                    calorie: ZipInput
                 })
 
+            function goToAddress() {
+              var myLatLng = {lat: -25.363, lng: 131.044};
 
+              // Create a map object and specify the DOM element for display.
+              var map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                zoom: 4
+              });
+
+              // Create a marker and set its position.
+              var marker = new google.maps.Marker({
+                map: map,
+                position: myLatLng,
+                title: 'Hello World!'
+              });
+            }
+            
             })
 
 
@@ -96,18 +124,6 @@ var database = firebase.database();
 
 })()
 
-function initMap() {
-      var uluru = {lat: -25.363, lng: 131.044};
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
-      });
-      var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-      });
-
-}
 
 
 
